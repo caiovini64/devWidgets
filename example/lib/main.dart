@@ -104,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {},
             ),
             DMHorizontalBox.semiLarge(),
-            DMSwitch(value: true, onChanged: (a) {}),
+            DMSwitchButton(value: true, onChanged: (a) {}),
             DMHorizontalBox.semiLarge(),
             Text(
               '$_counter',

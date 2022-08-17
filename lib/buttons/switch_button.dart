@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DMSwitch extends StatefulWidget {
+class DMSwitchButton extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
   final Color backgroundColor;
 
-  const DMSwitch({
+  const DMSwitchButton({
     Key? key,
     required this.value,
     required this.onChanged,
@@ -13,10 +13,10 @@ class DMSwitch extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  DMSwitchState createState() => DMSwitchState();
+  DMSwitchButtonState createState() => DMSwitchButtonState();
 }
 
-class DMSwitchState extends State<DMSwitch>
+class DMSwitchButtonState extends State<DMSwitchButton>
     with SingleTickerProviderStateMixin {
   late Animation _circleAnimation;
   late AnimationController _animationController;
@@ -42,7 +42,7 @@ class DMSwitchState extends State<DMSwitch>
   }
 
   @override
-  void didUpdateWidget(covariant DMSwitch oldWidget) {
+  void didUpdateWidget(covariant DMSwitchButton oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.value != widget.value) {
       if (widget.value) {

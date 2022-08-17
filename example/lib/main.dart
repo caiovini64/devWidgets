@@ -105,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             DMHorizontalBox.semiLarge(),
             DMSwitch(value: true, onChanged: (a) {}),
+            DMHorizontalBox.semiLarge(),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,

@@ -1,6 +1,7 @@
+import 'package:devmagic_widgets/constants/padding_constants.dart';
 import 'package:flutter/material.dart';
 
-class SubmitButton extends StatelessWidget {
+class DMSubmitButton extends StatelessWidget {
   final VoidCallback? onTap;
   final String text;
   final TextStyle? textStyle;
@@ -10,7 +11,7 @@ class SubmitButton extends StatelessWidget {
   final bool isOutlined;
   final bool isLoading;
   final Color? buttonColor;
-  const SubmitButton({
+  const DMSubmitButton({
     required this.text,
     this.textStyle,
     this.minWidth = 193,
@@ -32,7 +33,7 @@ class SubmitButton extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(
         vertical: 12,
-        horizontal: 16,
+        horizontal: DMPaddingConstants.medium,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -51,7 +52,7 @@ class SubmitButton extends StatelessWidget {
                 if (leadingWidget != null)
                   Padding(
                     padding: const EdgeInsets.only(
-                      right: 24,
+                      right: DMPaddingConstants.semiLarge,
                     ),
                     child: leadingWidget,
                   ),

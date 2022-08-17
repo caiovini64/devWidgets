@@ -1,9 +1,4 @@
 library devmagic_widgets;
 
-export 'package:devmagic_widgets/submit_button_widget.dart';
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:devmagic_widgets/buttons/submit_button_widget.dart';
+export 'package:devmagic_widgets/constants/padding_constants.dart';

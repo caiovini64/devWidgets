@@ -103,6 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'text',
               onTap: () {},
             ),
+            DMHorizontalBox.semiLarge(),
+            DMSwitch(value: true, onChanged: (a) {}),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,

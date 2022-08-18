@@ -1,12 +1,11 @@
 import 'package:devmagic_widgets/devmagic_widgets.dart';
 import 'package:flutter/material.dart';
 
-class DMBorderButtonWidget extends StatelessWidget {
+class DMElevatedButton extends StatelessWidget {
   final Function onTap;
   final String text;
 
-  const DMBorderButtonWidget(
-      {Key? key, required this.onTap, required this.text})
+  const DMElevatedButton({Key? key, required this.onTap, required this.text})
       : super(key: key);
 
   @override
@@ -30,7 +29,12 @@ class DMBorderButtonWidget extends StatelessWidget {
         padding: const EdgeInsets.all(DMPaddingConstants.semiSmall),
         child: Text(
           text,
-          style: Theme.of(context).textTheme.button,
+          style: const TextStyle(
+            fontFamily: 'FiraSans',
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
         ),
       ),
       onPressed: () => onTap(),

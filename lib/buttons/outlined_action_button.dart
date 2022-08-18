@@ -16,7 +16,7 @@ class DMOutlinedActionButton extends StatelessWidget {
     required this.text,
     this.onTap,
     Key? key,
-  })  : color = Colors.white,
+  })  : color = Colors.transparent,
         super(key: key);
 
   static const _minButtonWidth = 73.0;
@@ -37,9 +37,11 @@ class DMOutlinedActionButton extends StatelessWidget {
         children: [
           Text(
             text,
-            style: Theme.of(context).textTheme.caption?.copyWith(
-                  color: Colors.grey[700],
-                ),
+            style: const TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w500,
+              color: Color.fromARGB(255, 112, 112, 112),
+            ),
           ),
         ],
       ),

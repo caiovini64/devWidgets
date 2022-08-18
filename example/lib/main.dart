@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
             DMBorderButtonWidget(onTap: () {}, text: 'text'),
             const DMVerticalBox.medium(),
             DMRoundedButton(
-              onTap: () {},
+              onTap: () => showFloatSnackBar(context, 'content'),
               child: const Icon(Icons.wallet_giftcard),
             ),
           ],

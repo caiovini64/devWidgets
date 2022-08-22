@@ -23,7 +23,7 @@ class DMSubmitButton extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  static const _loadingSize = 22.0;
+  static const _loadingSize = 17.0;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,9 @@ class DMSubmitButton extends StatelessWidget {
       onPressed: onTap,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
-          onTap != null ? buttonColor ?? Colors.blue : Colors.grey,
+          onTap != null
+              ? buttonColor ?? Theme.of(context).primaryColor
+              : Colors.grey,
         ),
         padding: MaterialStateProperty.all(
           EdgeInsets.zero,

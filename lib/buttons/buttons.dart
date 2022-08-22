@@ -1,4 +1,4 @@
-export 'elevated_button.dart';
+export 'boder_button.dart';
 export 'outlined_action_button.dart';
 export 'rounded_button.dart';
 export 'submit_action_button.dart';

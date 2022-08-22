@@ -7,17 +7,10 @@ class DMOutlinedActionButton extends StatelessWidget {
   final Color color;
   const DMOutlinedActionButton({
     required this.text,
-    required this.color,
+    this.color = Colors.transparent,
     this.onTap,
     Key? key,
   }) : super(key: key);
-
-  const DMOutlinedActionButton.secondary({
-    required this.text,
-    this.onTap,
-    Key? key,
-  })  : color = Colors.transparent,
-        super(key: key);
 
   static const _minButtonWidth = 73.0;
   static const _minButtonHeight = 33.0;

@@ -28,7 +28,6 @@ class WidgetsPage extends StatefulWidget {
 
 class _WidgetsPageState extends State<WidgetsPage> {
   static const _spacing = 8.0;
-  static const _verticalSpacing = 24.0;
   bool isDarkMode = false;
 
   @override
@@ -39,22 +38,7 @@ class _WidgetsPageState extends State<WidgetsPage> {
           "Design System",
           style: TextStyle(color: Colors.white),
         ),
-        actions: [
-          // IconButton(
-          //     onPressed: () {
-          //       setState(() {
-          //         isDarkMode = !isDarkMode;
-          //       });
-          //     },
-          //     icon: Icon(
-          //       Icons.dark_mode,
-          //       color:
-          //           isDarkMode ? CustomColors.darkBlue : CustomColors.lightGrey,
-          //     ))
-        ],
       ),
-      // backgroundColor:
-      //     isDarkMode ? CustomColors.primary.withOpacity(0.6) : null,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

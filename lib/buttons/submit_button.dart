@@ -23,7 +23,7 @@ class DMSubmitButton extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  static const _loadingSize = 22.0;
+  static const _loadingSize = 17.0;
 
   @override
   Widget build(BuildContext context) {

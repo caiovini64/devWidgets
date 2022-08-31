@@ -39,10 +39,13 @@ class DMTextField extends StatelessWidget {
   final void Function()? submitForm;
   final TextInputAction? textInputAction;
   final bool? enabled;
+  final AutovalidateMode? autovalidateMode;
+  final Key? formKey;
 
   const DMTextField({
     this.controller,
     this.initialValue,
+    this.autovalidateMode,
     this.labelText,
     this.hintText,
     this.helperText,
@@ -68,6 +71,7 @@ class DMTextField extends StatelessWidget {
     this.textInputAction,
     this.enabled = true,
     this.textCapitalization = TextCapitalization.none,
+    this.formKey,
     Key? key,
   }) : super(key: key);
 
@@ -77,103 +81,107 @@ class DMTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextFormField(
-          textInputAction: textInputAction,
-          controller: controller,
-          onChanged: onChanged,
-          initialValue: controller == null ? initialValue : null,
-          obscureText: obscureText,
-          maxLength: maxLength,
-          onFieldSubmitted: (value) =>
-              submitForm != null ? submitForm!() : null,
-          keyboardType: keyboardType,
-          textAlign: textAlign ?? TextAlign.start,
-          enabled: enabled,
-          decoration: InputDecoration(
-            helperText: helperText,
-            helperStyle: const TextStyle(
-              fontFamily: 'Roboto',
-              fontSize: 14.0,
-              fontWeight: FontWeight.w400,
-              color: Color(0xFF1A202C),
-            ),
-            counterText: "",
-            hintText: hintText,
-            hintStyle: hintStyle,
-            fillColor: fillColor ?? const Color(0xFFF5F5F5),
-            labelText: labelText,
-            filled: true,
-            errorText: errorText != null ? "" : null,
-            border: border ?? const UnderlineInputBorder(),
-            errorStyle: const TextStyle(
-              fontSize: 0,
-            ),
-            enabledBorder: enabledBorder ??
-                const UnderlineInputBorder(
-                    borderSide: BorderSide(
-                  color: Color(0xFF8E8E8E),
-                  width: 2,
-                )),
-            disabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(
-              color: Color(0xFF8E8E8E),
-              width: 2,
-            )),
-            focusedBorder: focusedBorder ??
-                UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primary,
-                    width: 2,
-                  ),
-                ),
-            suffixIcon: suffixChild ??
-                (suffixIcon != null
-                    ? ClipOval(
-                        child: Material(
-                          shape: const CircleBorder(),
-                          color: Colors.transparent,
-                          child: IconButton(
-                            icon: Icon(
-                              suffixIcon,
-                              color: suffixIconColor,
-                              size: 26,
-                            ),
-                            onPressed: onSuffixIconTap,
-                          ),
-                        ),
-                      )
-                    : null),
-          ),
-          style: textStyle ??
-              const TextStyle(
-                color: Colors.black,
-                fontSize: _normalFontSize,
-              ),
-          validator: validator,
-          inputFormatters: inputFormatters,
-          textCapitalization: textCapitalization,
-        ),
-        Visibility(
-          visible: errorText != null,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: _errorHorizontalPadding,
-            ),
-            child: Text(
-              errorText ?? "",
-              style: const TextStyle(
-                fontSize: _errorFontSize,
+    return Form(
+      key: formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            autovalidateMode: autovalidateMode,
+            textInputAction: textInputAction,
+            controller: controller,
+            onChanged: onChanged,
+            initialValue: controller == null ? initialValue : null,
+            obscureText: obscureText,
+            maxLength: maxLength,
+            onFieldSubmitted: (value) =>
+                submitForm != null ? submitForm!() : null,
+            keyboardType: keyboardType,
+            textAlign: textAlign ?? TextAlign.start,
+            enabled: enabled,
+            decoration: InputDecoration(
+              helperText: helperText,
+              helperStyle: const TextStyle(
+                fontFamily: 'Roboto',
+                fontSize: 14.0,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFFB00020),
+                color: Color(0xFF1A202C),
+              ),
+              counterText: "",
+              hintText: hintText,
+              hintStyle: hintStyle,
+              fillColor: fillColor ?? const Color(0xFFF5F5F5),
+              labelText: labelText,
+              filled: true,
+              errorText: errorText != null ? "" : null,
+              border: border ?? const UnderlineInputBorder(),
+              errorStyle: const TextStyle(
+                fontSize: 0,
+              ),
+              enabledBorder: enabledBorder ??
+                  const UnderlineInputBorder(
+                      borderSide: BorderSide(
+                    color: Color(0xFF8E8E8E),
+                    width: 2,
+                  )),
+              disabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                color: Color(0xFF8E8E8E),
+                width: 2,
+              )),
+              focusedBorder: focusedBorder ??
+                  UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.primary,
+                      width: 2,
+                    ),
+                  ),
+              suffixIcon: suffixChild ??
+                  (suffixIcon != null
+                      ? ClipOval(
+                          child: Material(
+                            shape: const CircleBorder(),
+                            color: Colors.transparent,
+                            child: IconButton(
+                              icon: Icon(
+                                suffixIcon,
+                                color: suffixIconColor,
+                                size: 26,
+                              ),
+                              onPressed: onSuffixIconTap,
+                            ),
+                          ),
+                        )
+                      : null),
+            ),
+            style: textStyle ??
+                const TextStyle(
+                  color: Colors.black,
+                  fontSize: _normalFontSize,
+                ),
+            validator: validator,
+            inputFormatters: inputFormatters,
+            textCapitalization: textCapitalization,
+          ),
+          Visibility(
+            visible: errorText != null,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: _errorHorizontalPadding,
+              ),
+              child: Text(
+                errorText ?? "",
+                style: const TextStyle(
+                  fontSize: _errorFontSize,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFFB00020),
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

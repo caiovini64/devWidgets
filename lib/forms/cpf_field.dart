@@ -1,12 +1,13 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:devmagic_widgets/devmagic_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
-class DMRgField extends StatefulWidget {
+class DMCpfField extends StatefulWidget {
   final String labelText;
   final String emptyErrorText;
-  final String invalidRGErrorText;
+  final String invalidCPFErrorText;
   final Function(String)? onChanged;
   final TextEditingController controller;
   final Key? formKey;
@@ -36,11 +37,11 @@ class DMRgField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final bool? enabled;
 
-  const DMRgField({
+  const DMCpfField({
     Key? key,
     required this.labelText,
     required this.emptyErrorText,
-    required this.invalidRGErrorText,
+    required this.invalidCPFErrorText,
     required this.controller,
     required this.formKey,
     this.onChanged,
@@ -71,10 +72,10 @@ class DMRgField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<DMRgField> createState() => _DMRgFieldState();
+  State<DMCpfField> createState() => _DMCpfFieldState();
 }
 
-class _DMRgFieldState extends State<DMRgField> {
+class _DMCpfFieldState extends State<DMCpfField> {
   final _controller = TextEditingController();
   String? errorText;
   @override
@@ -88,6 +89,10 @@ class _DMRgFieldState extends State<DMRgField> {
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: _validateForm,
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        CpfInputFormatter(),
+      ],
       border: widget.border,
       enabledBorder: widget.enabledBorder,
       focusedBorder: widget.focusedBorder,
@@ -117,7 +122,7 @@ class _DMRgFieldState extends State<DMRgField> {
         setState(() {});
       });
     } else if (!rgValidator(text)) {
-      errorText = widget.invalidRGErrorText;
+      errorText = widget.invalidCPFErrorText;
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
@@ -131,8 +136,7 @@ class _DMRgFieldState extends State<DMRgField> {
   }
 
   bool rgValidator(String text) {
-    if (text.length < 8) return false;
-    final regExp = RegExp(r"(^\d{1,2}).?(\d{3}).?(\d{3})-?(\d{1}|X|x$)");
+    final regExp = RegExp(r"(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)");
     return regExp.hasMatch(text);
   }
 }

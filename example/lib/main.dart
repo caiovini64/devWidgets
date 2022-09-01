@@ -1,4 +1,5 @@
 import 'package:devmagic_widgets/devmagic_widgets.dart';
+import 'package:example/form.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const WidgetsPage(),
+      home: const FormExample(),
     );
   }
 }
@@ -59,20 +60,6 @@ class _WidgetsPageState extends State<WidgetsPage> {
                       DMSubmitButton(
                         text: 'Label',
                         onTap: () {},
-                      ),
-                      DMNameField(
-                        formKey: nameKey,
-                        labelText: 'name',
-                        emptyErrorText: 'empty',
-                        invalidNameErrorText: 'invalidName',
-                        controller: TextEditingController(),
-                      ),
-                      DMRGField(
-                        formKey: rgKey,
-                        labelText: 'RG',
-                        emptyErrorText: 'empty',
-                        invalidRGErrorText: 'invalidRG',
-                        controller: TextEditingController(),
                       ),
                       DMSubmitButton(
                         text: 'Label',

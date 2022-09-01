@@ -85,7 +85,6 @@ class _DMNameFieldState extends State<DMNameField> {
       keyboardType: TextInputType.name,
       labelText: widget.labelText,
       maxLength: widget.maxLength,
-      errorText: errorText,
       controller: _controller,
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,

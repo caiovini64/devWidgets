@@ -116,7 +116,7 @@ class _DMRgFieldState extends State<DMRgField> {
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
-    } else if (!rgValidator(text)) {
+    } else if (!_rgValidator(text)) {
       errorText = widget.invalidRGErrorText;
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
@@ -130,7 +130,7 @@ class _DMRgFieldState extends State<DMRgField> {
     return errorText;
   }
 
-  bool rgValidator(String text) {
+  bool _rgValidator(String text) {
     if (text.length < 8) return false;
     final regExp = RegExp(r"(^\d{1,2}).?(\d{3}).?(\d{3})-?(\d{1}|X|x$)");
     return regExp.hasMatch(text);

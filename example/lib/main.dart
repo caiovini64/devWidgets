@@ -1,5 +1,5 @@
 import 'package:devmagic_widgets/devmagic_widgets.dart';
-import 'package:example/form.dart';
+import 'package:example/form_example.dart';
 import 'package:flutter/material.dart';
 
 void main() {

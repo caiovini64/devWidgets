@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
-class DMNameField extends StatefulWidget {
+class DMEmailField extends StatefulWidget {
   final String labelText;
   final String emptyErrorText;
-  final String invalidNameErrorText;
+  final String invalidEmailerrorText;
   final Function(String)? onChanged;
   final TextEditingController controller;
   final Key? formKey;
@@ -36,11 +36,11 @@ class DMNameField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final bool? enabled;
 
-  const DMNameField({
+  const DMEmailField({
     Key? key,
     required this.labelText,
     required this.emptyErrorText,
-    required this.invalidNameErrorText,
+    required this.invalidEmailerrorText,
     required this.controller,
     required this.formKey,
     this.onChanged,
@@ -71,18 +71,17 @@ class DMNameField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<DMNameField> createState() => _DMNameFieldState();
+  State<DMEmailField> createState() => _DMEmailFieldState();
 }
 
-class _DMNameFieldState extends State<DMNameField> {
+class _DMEmailFieldState extends State<DMEmailField> {
   final _controller = TextEditingController();
   String? errorText;
   @override
   Widget build(BuildContext context) {
     return DMTextField(
       formKey: widget.formKey,
-      textCapitalization: TextCapitalization.words,
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.emailAddress,
       labelText: widget.labelText,
       maxLength: widget.maxLength,
       controller: _controller,
@@ -104,6 +103,7 @@ class _DMNameFieldState extends State<DMNameField> {
       suffixIcon: widget.suffixIcon,
       suffixIconColor: widget.suffixIconColor,
       textAlign: widget.textAlign,
+      textCapitalization: widget.textCapitalization,
       textInputAction: widget.textInputAction,
       textStyle: widget.textStyle,
       enabled: widget.enabled,
@@ -116,8 +116,8 @@ class _DMNameFieldState extends State<DMNameField> {
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
-    } else if (!_nameValidator(text)) {
-      errorText = widget.invalidNameErrorText;
+    } else if (!_emailValidator(text)) {
+      errorText = widget.invalidEmailerrorText;
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
@@ -130,8 +130,9 @@ class _DMNameFieldState extends State<DMNameField> {
     return errorText;
   }
 
-  bool _nameValidator(String text) {
-    final regExp = RegExp("[A-Z][a-z]* [A-Z][a-z]*");
+  bool _emailValidator(String text) {
+    final regExp = RegExp(
+        r"""(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])""");
     return regExp.hasMatch(text);
   }
 }

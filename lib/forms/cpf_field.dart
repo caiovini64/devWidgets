@@ -121,7 +121,7 @@ class _DMCpfFieldState extends State<DMCpfField> {
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
-    } else if (!rgValidator(text)) {
+    } else if (!_rgValidator(text)) {
       errorText = widget.invalidCPFErrorText;
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
@@ -135,7 +135,7 @@ class _DMCpfFieldState extends State<DMCpfField> {
     return errorText;
   }
 
-  bool rgValidator(String text) {
+  bool _rgValidator(String text) {
     final regExp = RegExp(r"(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)");
     return regExp.hasMatch(text);
   }

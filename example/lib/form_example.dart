@@ -9,6 +9,7 @@ class FormExample extends StatelessWidget {
     final nameKey = GlobalKey<FormState>();
     final rgKey = GlobalKey<FormState>();
     final cpfKey = GlobalKey<FormState>();
+    final emailKey = GlobalKey<FormState>();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -35,6 +36,14 @@ class FormExample extends StatelessWidget {
               labelText: 'CPF',
               emptyErrorText: 'empty',
               invalidCPFErrorText: 'invalidCPF',
+              controller: TextEditingController(),
+            ),
+            const DMHorizontalBox.medium(),
+            DMEmailField(
+              formKey: emailKey,
+              labelText: 'Email',
+              emptyErrorText: 'empty',
+              invalidEmailerrorText: 'invalidEmail',
               controller: TextEditingController(),
             ),
           ],

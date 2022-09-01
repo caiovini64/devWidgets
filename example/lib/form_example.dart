@@ -1,19 +1,26 @@
 import 'package:devmagic_widgets/devmagic_widgets.dart';
 import 'package:flutter/material.dart';
 
-class FormExample extends StatelessWidget {
+class FormExample extends StatefulWidget {
   const FormExample({Key? key}) : super(key: key);
 
+  @override
+  State<FormExample> createState() => _FormExampleState();
+}
+
+class _FormExampleState extends State<FormExample> {
   @override
   Widget build(BuildContext context) {
     final nameKey = GlobalKey<FormState>();
     final rgKey = GlobalKey<FormState>();
     final cpfKey = GlobalKey<FormState>();
     final emailKey = GlobalKey<FormState>();
+    String? selectedCity;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             DMNameField(
               formKey: nameKey,
@@ -45,6 +52,15 @@ class FormExample extends StatelessWidget {
               emptyErrorText: 'empty',
               invalidEmailerrorText: 'invalidEmail',
               controller: TextEditingController(),
+            ),
+            const DMHorizontalBox.medium(),
+            DMCityField(
+              list: const ['Aracaju', 'Itabaiana', 'Socorro'],
+              title: 'Cidades',
+              onChanged: (value) {
+                selectedCity = value;
+                setState(() {});
+              },
             ),
           ],
         ),

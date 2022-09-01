@@ -15,6 +15,7 @@ class _FormExampleState extends State<FormExample> {
     final rgKey = GlobalKey<FormState>();
     final cpfKey = GlobalKey<FormState>();
     final emailKey = GlobalKey<FormState>();
+    final passwordKey = GlobalKey<FormState>();
     String? selectedCity;
     return Scaffold(
       body: Padding(
@@ -62,6 +63,14 @@ class _FormExampleState extends State<FormExample> {
                 setState(() {});
               },
             ),
+            const DMHorizontalBox.medium(),
+            DMPasswordField(
+              labelText: 'Password',
+              emptyErrorText: 'empty',
+              invalidPasswordErrorText: 'invalidPassword',
+              controller: TextEditingController(),
+              formKey: passwordKey,
+            )
           ],
         ),
       ),

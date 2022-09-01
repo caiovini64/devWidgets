@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
-class DMNameForm extends StatefulWidget {
-  final int maxLength;
+class DMRGField extends StatefulWidget {
   final String labelText;
-  final Function(String)? onChanged;
   final String emptyErrorText;
-  final String invalidNameErrorText;
+  final String invalidRGErrorText;
+  final Function(String)? onChanged;
   final TextEditingController controller;
   final Key? formKey;
+
+  final int maxLength;
   final String? hintText;
   final String? helperText;
   final TextStyle? hintStyle;
@@ -35,11 +36,11 @@ class DMNameForm extends StatefulWidget {
   final TextInputAction? textInputAction;
   final bool? enabled;
 
-  const DMNameForm({
+  const DMRGField({
     Key? key,
     required this.labelText,
     required this.emptyErrorText,
-    required this.invalidNameErrorText,
+    required this.invalidRGErrorText,
     required this.controller,
     required this.formKey,
     this.onChanged,
@@ -70,18 +71,17 @@ class DMNameForm extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<DMNameForm> createState() => _DMNameFormState();
+  State<DMRGField> createState() => _DMRGFieldState();
 }
 
-class _DMNameFormState extends State<DMNameForm> {
+class _DMRGFieldState extends State<DMRGField> {
   final _controller = TextEditingController();
   String? errorText;
   @override
   Widget build(BuildContext context) {
     return DMTextField(
       formKey: widget.formKey,
-      textCapitalization: TextCapitalization.words,
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.number,
       labelText: widget.labelText,
       maxLength: widget.maxLength,
       errorText: errorText,
@@ -89,6 +89,25 @@ class _DMNameFormState extends State<DMNameForm> {
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: _validateForm,
+      border: widget.border,
+      enabledBorder: widget.enabledBorder,
+      focusedBorder: widget.focusedBorder,
+      fillColor: widget.fillColor,
+      helperText: widget.helperText,
+      hintStyle: widget.hintStyle,
+      hintText: widget.hintText,
+      initialValue: widget.initialValue,
+      obscureText: widget.obscureText,
+      onSuffixIconTap: widget.onSuffixIconTap,
+      submitForm: widget.submitForm,
+      suffixChild: widget.suffixChild,
+      suffixIcon: widget.suffixIcon,
+      suffixIconColor: widget.suffixIconColor,
+      textAlign: widget.textAlign,
+      textCapitalization: widget.textCapitalization,
+      textInputAction: widget.textInputAction,
+      textStyle: widget.textStyle,
+      enabled: widget.enabled,
     );
   }
 
@@ -98,8 +117,8 @@ class _DMNameFormState extends State<DMNameForm> {
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
-    } else if (!nameValidator(text)) {
-      errorText = widget.invalidNameErrorText;
+    } else if (!rgValidator(text)) {
+      errorText = widget.invalidRGErrorText;
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
@@ -112,8 +131,8 @@ class _DMNameFormState extends State<DMNameForm> {
     return errorText;
   }
 
-  bool nameValidator(String text) {
-    final regExp = RegExp("[A-Z][a-z]* [A-Z][a-z]*");
+  bool rgValidator(String text) {
+    final regExp = RegExp(r"(^\d{1,2}).?(\d{3}).?(\d{3})-?(\d{1}|X|x$)");
     return regExp.hasMatch(text);
   }
 }

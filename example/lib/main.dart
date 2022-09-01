@@ -30,6 +30,7 @@ class _WidgetsPageState extends State<WidgetsPage> {
   static const _spacing = 8.0;
   bool isDarkMode = false;
   final nameKey = GlobalKey<FormState>();
+  final rgKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +60,18 @@ class _WidgetsPageState extends State<WidgetsPage> {
                         text: 'Label',
                         onTap: () {},
                       ),
-                      DMNameForm(
+                      DMNameField(
                         formKey: nameKey,
                         labelText: 'name',
                         emptyErrorText: 'empty',
-                        invalidNameErrorText: 'notStarting',
+                        invalidNameErrorText: 'invalidName',
+                        controller: TextEditingController(),
+                      ),
+                      DMRGField(
+                        formKey: rgKey,
+                        labelText: 'RG',
+                        emptyErrorText: 'empty',
+                        invalidRGErrorText: 'invalidRG',
                         controller: TextEditingController(),
                       ),
                       DMSubmitButton(

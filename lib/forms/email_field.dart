@@ -75,7 +75,6 @@ class DMEmailField extends StatefulWidget {
 }
 
 class _DMEmailFieldState extends State<DMEmailField> {
-  final _controller = TextEditingController();
   String? errorText;
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ class _DMEmailFieldState extends State<DMEmailField> {
       keyboardType: TextInputType.emailAddress,
       labelText: widget.labelText,
       maxLength: widget.maxLength,
-      controller: _controller,
+      controller: widget.controller,
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: _validateForm,

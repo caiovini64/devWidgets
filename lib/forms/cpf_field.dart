@@ -76,7 +76,6 @@ class DMCpfField extends StatefulWidget {
 }
 
 class _DMCpfFieldState extends State<DMCpfField> {
-  final _controller = TextEditingController();
   String? errorText;
   @override
   Widget build(BuildContext context) {
@@ -85,7 +84,7 @@ class _DMCpfFieldState extends State<DMCpfField> {
       keyboardType: TextInputType.number,
       labelText: widget.labelText,
       maxLength: widget.maxLength,
-      controller: _controller,
+      controller: widget.controller,
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: _validateForm,

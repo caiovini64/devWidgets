@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
-class DMNameField extends StatefulWidget {
+class DMConfirmPasswordField extends StatefulWidget {
   final String labelText;
   final String emptyErrorText;
-  final String invalidNameErrorText;
+  final String invalidPasswordErrorText;
   final Function(String)? onChanged;
   final TextEditingController controller;
+  final TextEditingController passwordController;
   final Key? formKey;
 
   final int maxLength;
@@ -36,15 +37,16 @@ class DMNameField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final bool? enabled;
 
-  const DMNameField({
+  const DMConfirmPasswordField({
     Key? key,
     required this.labelText,
     required this.emptyErrorText,
-    required this.invalidNameErrorText,
+    required this.invalidPasswordErrorText,
     required this.controller,
+    required this.passwordController,
     required this.formKey,
     this.onChanged,
-    this.maxLength = 26,
+    this.maxLength = 24,
     this.initialValue,
     this.hintText,
     this.helperText,
@@ -71,17 +73,16 @@ class DMNameField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<DMNameField> createState() => _DMNameFieldState();
+  State<DMConfirmPasswordField> createState() => _DMConfirmPasswordFieldState();
 }
 
-class _DMNameFieldState extends State<DMNameField> {
+class _DMConfirmPasswordFieldState extends State<DMConfirmPasswordField> {
   String? errorText;
   @override
   Widget build(BuildContext context) {
     return DMTextField(
       formKey: widget.formKey,
-      textCapitalization: TextCapitalization.words,
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.number,
       labelText: widget.labelText,
       maxLength: widget.maxLength,
       controller: widget.controller,
@@ -103,6 +104,7 @@ class _DMNameFieldState extends State<DMNameField> {
       suffixIcon: widget.suffixIcon,
       suffixIconColor: widget.suffixIconColor,
       textAlign: widget.textAlign,
+      textCapitalization: widget.textCapitalization,
       textInputAction: widget.textInputAction,
       textStyle: widget.textStyle,
       enabled: widget.enabled,
@@ -115,8 +117,8 @@ class _DMNameFieldState extends State<DMNameField> {
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
-    } else if (!_nameValidator(text)) {
-      errorText = widget.invalidNameErrorText;
+    } else if (!_passwordValidator(text)) {
+      errorText = widget.invalidPasswordErrorText;
       SchedulerBinding.instance!.addPostFrameCallback((duration) {
         setState(() {});
       });
@@ -129,8 +131,8 @@ class _DMNameFieldState extends State<DMNameField> {
     return errorText;
   }
 
-  bool _nameValidator(String text) {
-    final regExp = RegExp("[A-Z][a-z]* [A-Z][a-z]*");
-    return regExp.hasMatch(text);
+  bool _passwordValidator(String text) {
+    if (text.length < 8) return false;
+    return widget.passwordController.value.text == text;
   }
 }

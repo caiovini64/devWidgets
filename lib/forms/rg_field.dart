@@ -75,7 +75,6 @@ class DMRgField extends StatefulWidget {
 }
 
 class _DMRgFieldState extends State<DMRgField> {
-  final _controller = TextEditingController();
   String? errorText;
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ class _DMRgFieldState extends State<DMRgField> {
       keyboardType: TextInputType.number,
       labelText: widget.labelText,
       maxLength: widget.maxLength,
-      controller: _controller,
+      controller: widget.controller,
       onChanged: widget.onChanged,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: _validateForm,

@@ -20,11 +20,12 @@ class _FormExampleState extends State<FormExample> {
     final passwordController = TextEditingController();
     String? selectedCity;
     String? selectedGender;
+    List<String>? selectedTags = [];
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DMNameField(
               formKey: nameKey,
@@ -58,13 +59,16 @@ class _FormExampleState extends State<FormExample> {
               controller: TextEditingController(),
             ),
             const DMHorizontalBox.medium(),
-            DMCityField(
-              list: const ['Aracaju', 'Itabaiana', 'Socorro'],
-              title: 'Cidades',
-              onChanged: (value) {
-                selectedCity = value;
-                setState(() {});
-              },
+            Align(
+              alignment: Alignment.centerRight,
+              child: DMCityField(
+                list: const ['Aracaju', 'Itabaiana', 'Socorro'],
+                title: 'Cidades',
+                onChanged: (value) {
+                  selectedCity = value;
+                  setState(() {});
+                },
+              ),
             ),
             const DMHorizontalBox.medium(),
             DMPasswordField(
@@ -84,14 +88,23 @@ class _FormExampleState extends State<FormExample> {
               formKey: confirmPasswordKey,
             ),
             const DMHorizontalBox.medium(),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: DMGenderField(
+            DMGenderField(
                 title: 'Genders',
                 maleTitle: 'Male',
                 femaleTitle: 'Female',
-                onChanged: (value) => selectedGender = value,
-              ),
+                onChanged: (value) {
+                  selectedGender = value;
+                  setState(() {});
+                }),
+            const DMHorizontalBox.medium(),
+            DMChipField(
+              title: 'Tags',
+              items: const ['a', 'b', 'c'],
+              selectedItems: const [],
+              onChanged: (value) {
+                selectedTags = value;
+                setState(() {});
+              },
             ),
           ],
         ),

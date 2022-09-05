@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   brasil_fields: ^1.4.5
   mask_text_input_formatter: ^2.4.0
+  flutter_awesome_select: ^6.5.0
   
 
 dev_dependencies:

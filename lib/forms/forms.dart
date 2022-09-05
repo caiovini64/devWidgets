@@ -5,3 +5,4 @@ export 'email_field.dart';
 export 'city_field.dart';
 export 'password_field.dart';
 export 'confirm_password_field.dart';
+export 'gender_field.dart';

@@ -19,6 +19,7 @@ class _FormExampleState extends State<FormExample> {
     final confirmPasswordKey = GlobalKey<FormState>();
     final passwordController = TextEditingController();
     String? selectedCity;
+    String? selectedGender;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -81,7 +82,17 @@ class _FormExampleState extends State<FormExample> {
               controller: TextEditingController(),
               passwordController: passwordController,
               formKey: confirmPasswordKey,
-            )
+            ),
+            const DMHorizontalBox.medium(),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: DMGenderField(
+                title: 'Genders',
+                maleTitle: 'Male',
+                femaleTitle: 'Female',
+                onChanged: (value) => selectedGender = value,
+              ),
+            ),
           ],
         ),
       ),

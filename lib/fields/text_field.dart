@@ -39,10 +39,12 @@ class DMTextField extends StatelessWidget {
   final void Function()? submitForm;
   final TextInputAction? textInputAction;
   final bool? enabled;
+  final AutovalidateMode? autovalidateMode;
 
   const DMTextField({
     this.controller,
     this.initialValue,
+    this.autovalidateMode,
     this.labelText,
     this.hintText,
     this.helperText,
@@ -82,6 +84,7 @@ class DMTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
+          autovalidateMode: autovalidateMode,
           textInputAction: textInputAction,
           controller: controller,
           onChanged: onChanged,

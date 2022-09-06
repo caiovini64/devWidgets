@@ -1,4 +1,5 @@
 import 'package:devmagic_widgets/devmagic_widgets.dart';
+import 'package:example/form_example.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const WidgetsPage(),
+      home: const FormExample(),
     );
   }
 }
@@ -29,6 +30,8 @@ class WidgetsPage extends StatefulWidget {
 class _WidgetsPageState extends State<WidgetsPage> {
   static const _spacing = 8.0;
   bool isDarkMode = false;
+  final nameKey = GlobalKey<FormState>();
+  final rgKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

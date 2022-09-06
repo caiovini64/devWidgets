@@ -1,4 +1,4 @@
-# DMWidgets
+# MagicWidgets
 
 This library includes the commom widgets of the devmagic [design system](https://www.figma.com/file/IDSTh0MfYXfTJfC6pt1BSa/DMWidgets?node-id=0%3A1).
 

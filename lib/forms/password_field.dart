@@ -9,7 +9,6 @@ class DMPasswordField extends StatefulWidget {
   final String invalidPasswordErrorText;
   final Function(String)? onChanged;
   final TextEditingController controller;
-  final Key? formKey;
 
   final int maxLength;
   final String? hintText;
@@ -42,7 +41,6 @@ class DMPasswordField extends StatefulWidget {
     required this.emptyErrorText,
     required this.invalidPasswordErrorText,
     required this.controller,
-    required this.formKey,
     this.onChanged,
     this.maxLength = 24,
     this.initialValue,
@@ -79,7 +77,6 @@ class _DMPasswordFieldState extends State<DMPasswordField> {
   @override
   Widget build(BuildContext context) {
     return DMTextField(
-      formKey: widget.formKey,
       keyboardType: TextInputType.number,
       labelText: widget.labelText,
       maxLength: widget.maxLength,

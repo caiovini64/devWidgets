@@ -9,7 +9,6 @@ class DMNameField extends StatefulWidget {
   final String invalidNameErrorText;
   final Function(String)? onChanged;
   final TextEditingController controller;
-  final Key? formKey;
 
   final int maxLength;
   final String? hintText;
@@ -42,7 +41,6 @@ class DMNameField extends StatefulWidget {
     required this.emptyErrorText,
     required this.invalidNameErrorText,
     required this.controller,
-    required this.formKey,
     this.onChanged,
     this.maxLength = 26,
     this.initialValue,
@@ -79,7 +77,6 @@ class _DMNameFieldState extends State<DMNameField> {
   @override
   Widget build(BuildContext context) {
     return DMTextField(
-      formKey: widget.formKey,
       textCapitalization: TextCapitalization.words,
       keyboardType: TextInputType.name,
       labelText: widget.labelText,

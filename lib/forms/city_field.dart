@@ -16,8 +16,9 @@ class DMCityField extends StatefulWidget {
   State<DMCityField> createState() => _DMCityFieldState();
 }
 
+String? _dropDownValue;
+
 class _DMCityFieldState extends State<DMCityField> {
-  String? _dropDownValue;
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
@@ -32,6 +33,7 @@ class _DMCityFieldState extends State<DMCityField> {
         _dropDownValue = value;
         widget.onChanged?.call(value);
         setState(() {});
+        print(_dropDownValue);
       },
       items: widget.list.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(

@@ -9,7 +9,6 @@ class DMEmailField extends StatefulWidget {
   final String invalidEmailerrorText;
   final Function(String)? onChanged;
   final TextEditingController controller;
-  final Key? formKey;
 
   final int maxLength;
   final String? hintText;
@@ -42,7 +41,6 @@ class DMEmailField extends StatefulWidget {
     required this.emptyErrorText,
     required this.invalidEmailerrorText,
     required this.controller,
-    required this.formKey,
     this.onChanged,
     this.maxLength = 26,
     this.initialValue,
@@ -79,7 +77,6 @@ class _DMEmailFieldState extends State<DMEmailField> {
   @override
   Widget build(BuildContext context) {
     return DMTextField(
-      formKey: widget.formKey,
       keyboardType: TextInputType.emailAddress,
       labelText: widget.labelText,
       maxLength: widget.maxLength,

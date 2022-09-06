@@ -10,7 +10,6 @@ class DMCpfField extends StatefulWidget {
   final String invalidCPFErrorText;
   final Function(String)? onChanged;
   final TextEditingController controller;
-  final Key? formKey;
 
   final int maxLength;
   final String? hintText;
@@ -43,7 +42,6 @@ class DMCpfField extends StatefulWidget {
     required this.emptyErrorText,
     required this.invalidCPFErrorText,
     required this.controller,
-    required this.formKey,
     this.onChanged,
     this.maxLength = 26,
     this.initialValue,
@@ -80,7 +78,6 @@ class _DMCpfFieldState extends State<DMCpfField> {
   @override
   Widget build(BuildContext context) {
     return DMTextField(
-      formKey: widget.formKey,
       keyboardType: TextInputType.number,
       labelText: widget.labelText,
       maxLength: widget.maxLength,

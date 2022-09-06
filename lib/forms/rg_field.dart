@@ -9,7 +9,6 @@ class DMRgField extends StatefulWidget {
   final String invalidRGErrorText;
   final Function(String)? onChanged;
   final TextEditingController controller;
-  final Key? formKey;
 
   final int maxLength;
   final String? hintText;
@@ -42,7 +41,6 @@ class DMRgField extends StatefulWidget {
     required this.emptyErrorText,
     required this.invalidRGErrorText,
     required this.controller,
-    required this.formKey,
     this.onChanged,
     this.maxLength = 26,
     this.initialValue,
@@ -79,7 +77,6 @@ class _DMRgFieldState extends State<DMRgField> {
   @override
   Widget build(BuildContext context) {
     return DMTextField(
-      formKey: widget.formKey,
       keyboardType: TextInputType.number,
       labelText: widget.labelText,
       maxLength: widget.maxLength,
